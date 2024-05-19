@@ -1,0 +1,446 @@
+/* Constants */
+
+:root {
+  --oniBlue: #02AAD2;
+  --oniGlow: #003b94;
+  --bgColor: #dadada;
+}
+
+/* General Settings */
+
+body {
+  background-color: var(--bgColor);
+  max-width: 100%;
+}
+
+h2 {
+  height: 70px;
+}
+
+/* Video Settings */
+
+/* .video-container {
+  width: 100%;
+  position: relative;
+}
+
+.video-container video {
+  width: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+} *
+
+/* Carousel Settings */
+
+.carousel-caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+
+}
+
+.title {
+  font-size: 5em;
+  text-shadow: var(--oniBlue) 1px 0 10px;
+  font-family: 'Abril Fatface', cursive;
+  margin: 0;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+}
+
+.description {
+  font-size: 1.2em;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  opacity: 0;
+  animation: fadeIn 3s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+.carousel-item {
+  position: relative;
+  overflow: hidden;
+  max-height: 450px;
+  background-color: #000000;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 5s ease;
+  opacity: 0.2;
+}
+.carousel-item.active img {
+  animation: zoomInOut 20s infinite;
+}
+
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: auto;
+  }
+  
+  .title {
+    font-size: 2em;
+  }
+
+  .description {
+    font-size: 1em;
+  }
+}
+
+.carousel.carousel-fade .carousel-item {
+  display: block;
+  opacity: 0;
+  transition: opacity ease-out .7s;
+}
+
+.carousel.carousel-fade .carousel-item.active {
+  opacity: 1 !important;
+}
+
+/* Artists Settings */
+
+.founders {
+  margin-bottom: 2em;
+  max-width: 100%;
+}
+
+.tattoo-artists-section {
+  max-width: 100%;
+  background-image: url(../assets/img/woodbg.png);
+}
+
+.tattoo-artists-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.tattoo-artist {
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+}
+
+.artists {
+  animation: slideRight 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideRight {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+  }
+}
+
+.tattoo-artist img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  /* White and black filter */
+  filter: grayscale(100%);
+  /* Transition for the filter */
+  transition: filter 0.5s ease; 
+  border-radius: 10px;
+}
+
+.tattoo-artist:hover img {
+  /* Gradually removes the filter when hovering */
+  filter: grayscale(0%);
+}
+
+#inkBanner {
+  max-width: 350px;
+  height: auto;
+  display: block;
+  margin: -30px auto;
+}
+
+.founder {
+  animation: founder 1s ease 0s 1 normal forwards;
+}
+
+@keyframes founder {
+	0% {
+		opacity: 0;
+		transform: scale(0.6);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Center tatto artists with ink banner */
+.tats, .founder {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6em;
+}
+
+#info {
+  position: absolute;
+  font-size: small;
+  top: 80%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
+.role {
+  color: var(--oniBlue);
+}
+
+.founderRole {
+  color: var(--oniBlue);
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--oniGlow), 0 0 40px var(--oniGlow), 0 0 50px var(--oniGlow), 0 0 60px var(--oniGlow), 0 0 70px var(--oniGlow);
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px var(--oniBlue), 0 0 40px var(--oniBlue), 0 0 50px var(--oniBlue), 0 0 60px var(--oniBlue), 0 0 70px var(--oniBlue), 0 0 80px var(--oniBlue);
+  }
+}
+
+.at {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#artists, #map, #gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url(../assets/img/Banner.png);
+  width: 100%;
+  color: white;
+  text-shadow: #000000 4px 0 0px;
+}
+
+.maps {
+  text-align: center;
+}
+
+.map-container {
+  width: 100%;
+}
+
+.map-container iframe {
+  width: 100%;
+}
+
+/* Gallery  */
+.gallery {
+  display: grid;
+  grid-template-rows: repeat(5, 18vh);
+  grid-template-columns: repeat(2, 45vw);
+  transition: all 0.5s ease;
+  background-image: url(../assets/img/marblebg.png);
+  padding: 0.25em;
+  cursor: zoom-in;
+  justify-content: center;
+}
+
+.gallery img {
+  object-fit: cover;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+}
+
+.gallery img:hover {
+  opacity: 1;
+  z-index: 1;
+  box-shadow: 1em 1em 1em rgba(0, 0, 0, 0.4);
+  transition: all 0.5s ease;
+  width: 190%;
+  height: 190%;
+  left: -100%;
+  top: -100%;
+}
+
+/* Gallery Media Queries */
+
+@media (min-width: 40em) {
+  .gallery {
+    grid-template-rows: repeat(2, 20vh);
+  }
+}
+
+@media (min-width: 10em) and (orientation: landscape) {
+  .gallery {
+    grid-template-columns: repeat(5, 18vw);
+    grid-template-rows: repeat(2, 45vh);
+  }
+}
+
+@media (min-width: 60em) {
+  .gallery {
+    grid-template-columns: repeat(10, 8vw);
+    grid-template-rows: 25vh;
+  }
+}
+
+@media (min-width: 60em) {
+  .gallery img:hover {
+    width: 350%;
+    height: 150%;
+    left: -75%;
+    top: -25%;
+  }
+}
+
+@media (min-width: 60em) and (orientation: landscape) {
+  .gallery img:hover {
+    width: 190%;
+    height: 190%;
+    left: -75%;
+    top: -100%;
+  }
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 360px) {
+  .tattoo-artists-container {
+    flex-wrap: wrap;
+  }
+
+  .tattoo-artist {
+    width: 100%;
+  }
+
+  .artists-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2em;
+  }
+}
+
+@media screen and (min-width: 361px) and (max-width: 568px) {
+  .artists-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3em;
+  }
+}
+
+@media screen and (min-width: 569px) and (max-width: 666px) {
+  .artists-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+  }
+}
+
+@media screen and (min-width: 667px) and (max-width: 768px) {
+  .artists-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4em;
+  }
+
+  .title {
+    font-size: 5em;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .artists-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5em;
+  }
+}
+
+@media screen and (min-width: 1301px) {
+  .tattoo-artists-section img, .founders img {
+    height: 30em;
+    width: 30em;
+  }
+
+  #info {
+    position: absolute;
+    font-size: small;
+    top: 84%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  .artists-grid {
+    grid-template-columns: repeat(2, 2fr);
+    gap: 4em;
+  }
+}
+
+@media screen and (min-width: 2049px) {
+  .tattoo-artists-section img, .founders img {
+    height: 30em;
+    width: 30em;
+  }
+
+  #info {
+    position: absolute;
+    font-size: small;
+    top: 84%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  .artists-grid {
+    grid-template-columns: repeat(6, 2fr);
+    gap: 4em;
+  }
+
+  .carousel-caption {
+    height: 75%;
+  }
+}

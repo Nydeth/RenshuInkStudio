@@ -1,0 +1,24 @@
+.galeria-container {
+    text-align: center;
+}
+
+.nombre-artista {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.imagenes-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.imagen-galeria {
+    width: 200px;
+    margin: 10px;
+    transition: filter 2s ease-in-out; /* Transición suave para el efecto de blanco y negro */
+}
+
+.blanco-negro {
+    filter: grayscale(100%); /* Convertir a blanco y negro */
+}

@@ -1,0 +1,145 @@
+nav,
+header {
+  background-color: #111111;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  display: none;
+}
+
+ul {
+  font-family: "Abril Fatface", cursive;
+}
+
+ul {
+  font-size: 20px;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logoNav {
+  min-height: 7vh;
+  max-height: 9vh;
+  min-width: 7vh;
+  max-width: 8vh;
+  cursor: pointer;
+}
+
+.navbar-nav {
+  align-items: center;
+  text-align: center;
+}
+
+.nav-link {
+  color: rgb(255, 255, 255);
+  text-shadow: var(--oniBlue) 5px 0 15px;
+  transition: transform .2s;
+}
+
+.nav-link:hover {
+  transform: scale(1.2);
+}
+
+.navbar-toggler {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999; /* Asegúrate de que el botón esté sobre cualquier otro contenido */
+}
+
+.hidden {
+  display: none;
+}
+
+
+@media (max-width: 769px) {
+.navLogo {
+  display: none;
+}
+}
+
+@media (min-width: 769px) {
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .navList {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .navLogo {
+    width: 6%;
+    justify-content: center;
+    order: 2;
+  }
+
+  .links {
+    width: 47.7%;
+    flex-wrap: wrap;
+  }
+
+  .link1 {
+    order: 1;
+    justify-content: flex-end;
+  }
+
+  .link2 {
+    order: 3;
+    justify-content: flex-start;
+  }
+
+  header {
+    display: none;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 2048px) {
+  .logoNav {
+    width: calc(8vh + 2 * (5 - 3) * ((100vw - 360px) / (2048 - 426px)));
+    min-height: calc(8vh + 2 * (5 - 3) * ((100vw - 360px) / (2048 - 426px)));
+    max-height: calc(10vh + 2 * (7 - 5) * ((100vw - 360px) / (2048 - 426px)));
+    min-width: calc(8vh + 2 * (4 - 3) * ((100vw - 360px) / (2048 - 426px)));
+    max-width: calc(9vh + 2 * (6 - 4) * ((100vw - 360px) / (2048 - 426px)));
+  }
+
+  ul {
+    font-size: calc(23px + 5 * (19 - 16) * ((100vw - 360px) / (2048 - 426px)));
+  }
+
+  .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* From 2049px and above */
+@media screen and (min-width: 2049px) {
+  .logoNav {
+    width: 6vh;
+    min-height: 7vh;
+    max-height: 9vh;
+    min-width: 7vh;
+    max-width: 8vh;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+
+  ul {
+    font-size: calc(23px + 5 * (19 - 16) * ((100vw - 360px) / (2048 - 360)));
+  }
+}

@@ -1,0 +1,30 @@
+.cookie-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  .cookie-notification p {
+    margin: 0;
+  }
+
+  .cookie-notification button {
+    background-color: #02AAD1;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .cookie-notification button:hover {
+    background-color: #02AAD1;
+  }

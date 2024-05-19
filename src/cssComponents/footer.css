@@ -1,0 +1,198 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+:root {
+    --footerBGColor: rgb(39, 39, 39);
+}
+
+.logo {
+    min-height: 7vh;
+    max-height: 9vh;
+    min-width: 7vh;
+    max-width: 8vh;
+    margin-right: 1.5vw;
+    margin-left: 1.5vw;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.logo:hover {
+  transform: scale(1.2);
+}
+
+
+footer {
+    clear: both;
+    position: relative;
+    text-align: center;
+    background: var(--footerBGColor);
+    padding: 20px;
+    width: 100%;
+    margin-top: 100px;
+    color: white;
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.brandName {
+  font-size: 24px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+#social {
+    margin: 20px 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* global button class */
+.smGlobalBtn {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    box-shadow: 0 3px 3px var(--footerBGColor);
+    padding: 0px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 2em;
+    border-radius: 27px;
+    -moz-border-radius: 27px;
+    -webkit-border-radius: 27px;
+}
+
+/* facebook button class*/
+.facebookBtn {
+    background: #4060A5;
+}
+
+.facebookBtn:before {
+    font-family: "FontAwesome";
+    content: "\f09a";
+}
+
+.facebookBtn:hover {
+    color: #4060A5;
+    background: #fff;
+    border-color: #4060A5;
+}
+
+/* twitter button class*/
+.twitterBtn {
+    background: #00ABE3;
+}
+
+.twitterBtn:before {
+    font-family: "FontAwesome";
+    content: "\f099";
+}
+
+.twitterBtn:hover {
+    color: #00ABE3;
+    background: #fff;
+    border-color: #00ABE3;
+}
+
+/* linkedin button class*/
+.linkedinBtn {
+    background: #0094BC;
+}
+
+.linkedinBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0e1";
+}
+
+.linkedinBtn:hover {
+    color: #0094BC;
+    background: #fff;
+    border-color: #0094BC;
+}
+
+/* pinterest button class*/
+.pinterestBtn {
+    background: #cb2027;
+}
+
+.pinterestBtn:before {
+    font-family: "FontAwesome";
+    content: "\f0d2";
+}
+
+.pinterestBtn:hover {
+    color: #cb2027;
+    background: #fff;
+    border-color: #cb2027;
+}
+
+/* tumblr button class*/
+.tumblrBtn {
+    background: #3a5876;
+}
+
+.tumblrBtn:before {
+    font-family: "FontAwesome";
+    content: "\f173";
+}
+
+.tumblrBtn:hover {
+    color: #3a5876;
+    background: #fff;
+    border-color: #3a5876;
+}
+
+@media screen and (max-width: 360px) {
+    footer {
+        padding: 20px 10px;
+    }
+}
+
+@media screen and (min-width: 361px) and (max-width: 568px) {
+    .footer-content p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 569px) and (max-width: 666px) {
+    .footer-content p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 667px) and (max-width: 768px) {
+    .footer-content p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .footer-content p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1300px) {
+    .footer-content p {
+        font-size: 20px;
+    }
+}
