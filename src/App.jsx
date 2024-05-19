@@ -9,6 +9,7 @@ import ContactoPage from './pages/Contacta';
 import Biblioteca from './pages/BibliotecaImg';
 import Bisuteria from './pages/BisuteriaImg';
 import Equipo from './pages/Equipo';
+import AdminLogin from './pages/AdminLogin';
 
 const appRoutes = [
   {
@@ -43,6 +44,10 @@ const appRoutes = [
   {
     path:'/equipo',
     component:Equipo,
+  },
+  {
+    path:'/admin-login',
+    component:AdminLogin,
   },
 ]
 function App() {
