@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../cssComponents/formularioContacto.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import "../cssComponents/Submit.scss"
 
 function TatuadorSelector() {
   const [tatuadores, setTatuadores] = useState([]);
@@ -31,13 +34,17 @@ function ContactForm() {
     nombre: "",
     email: "",
     publicidad: false,
-    telefono: null,
+    telefono: "",
   });
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
     setFormData({ ...formData, [name]: newValue });
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData({ ...formData, telefono: value });
   };
 
   const handleSubmit = async (e) => {
@@ -51,10 +58,8 @@ function ContactForm() {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        // Datos enviados exitosamente
         console.log("Datos enviados exitosamente");
       } else {
-        // Error al enviar los datos
         console.error("Error al enviar los datos");
       }
     } catch (error) {
@@ -91,39 +96,43 @@ function ContactForm() {
           onChange={handleChange}
         />
       </div>
+      <div className="form-group phone">
+        <label htmlFor="telefono" className="label">
+          Teléfono:
+        </label>
+        <PhoneInput
+          country={"es"}
+          value={formData.telefono}
+          onChange={handlePhoneChange}
+          inputProps={{
+            name: "telefono",
+            required: true,
+            className: "input-field",
+          }}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="selectTatuadores" className="label">
+          Selecciona un artista:
+        </label>
+        <TatuadorSelector />
+      </div>
       <div className="form-group">
         <label className="label">
+          Recibir publicidad
           <input
             type="checkbox"
             name="publicidad"
             checked={formData.publicidad}
             onChange={handleChange}
+            className="checkbox"
           />
-          Recibir publicidad
         </label>
       </div>
-      <div className="form-group">
-        <label htmlFor="telefono" className="label">
-          Teléfono:
-        </label>
-        <input
-          type="tel"
-          className="input-field"
-          id="telefono"
-          name="telefono"
-          value={formData.telefono || ""}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="selectTatuadores" className="label">
-          Selecciona un tatuador:
-        </label>
-        <TatuadorSelector />
-      </div>
-      <button type="submit" className="submit-button">
-        Enviar
-      </button>
+      <div className="button-container-1 submit-button" type="submit">
+      <span class="mas">Enviar</span>
+    <button id='work' type="button" name="Hover">Enviar</button>
+  </div>
     </form>
   );
 }

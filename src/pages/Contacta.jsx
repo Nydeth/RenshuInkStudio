@@ -8,8 +8,8 @@ export default function Contacta() {
 return (
   <>
     <Nav />
-    <h1>Contacta Con nosotros</h1>
-    <p>Para pedir cita o cualquier otra consulta sobre un tatuaje rellena este formulario:</p>
+    <h1 className="formH1">Contacta con nosotros</h1>
+    <h2 className="formH2">Para pedir cita o cualquier otra consulta sobre un tatuaje rellena este formulario:</h2>
     <FormularioContacto/>
     <Footer/>
   </>

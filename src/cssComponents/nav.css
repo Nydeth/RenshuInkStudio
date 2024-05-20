@@ -46,14 +46,14 @@ li {
 }
 
 .nav-link:hover {
-  transform: scale(1.2);
+  transform: scale(1.037);
 }
 
 .navbar-toggler {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 9999; /* Asegúrate de que el botón esté sobre cualquier otro contenido */
+  z-index: 9999;
 }
 
 .hidden {
