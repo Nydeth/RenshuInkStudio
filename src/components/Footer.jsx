@@ -5,11 +5,11 @@ export default function Footer() {
   return (
     <footer>
       <div id="social">
-        <a class="facebookBtn smGlobalBtn" href="#" ></a>
-        <a class="twitterBtn smGlobalBtn" href="#" ></a>
-        <a class="linkedinBtn smGlobalBtn" href="#" ></a>
-        <a class="pinterestBtn smGlobalBtn" href="#" ></a>
-        <a class="tumblrBtn smGlobalBtn" href="#" ></a>
+        <a className="facebookBtn smGlobalBtn" href="#" ></a>
+        <a className="twitterBtn smGlobalBtn" href="#" ></a>
+        <a className="linkedinBtn smGlobalBtn" href="#" ></a>
+        <a className="pinterestBtn smGlobalBtn" href="#" ></a>
+        <a className="tumblrBtn smGlobalBtn" href="#" ></a>
       </div>
       <center>
         <a id="Renshu">

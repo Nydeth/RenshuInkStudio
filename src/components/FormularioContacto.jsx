@@ -130,7 +130,7 @@ function ContactForm() {
         </label>
       </div>
       <div className="button-container-1 submit-button" type="submit">
-      <span class="mas">Enviar</span>
+      <span className="mas">Enviar</span>
     <button id='work' type="button" name="Hover">Enviar</button>
   </div>
     </form>

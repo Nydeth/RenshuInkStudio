@@ -178,7 +178,7 @@ export default function Main() {
       <section className="gallery-artist-section accordian">
         <h2 id="gallery">GALERÍA</h2>
         <div className="gallery-artist-container">
-          <div class="gallery">
+          <div className="gallery">
             <img src="src/assets/img/tattoo2.jpg" alt="Tatuaje 2" />
             <img src="src/assets/img/tattoo9.jpg" alt="Tatuaje 9" />
             <img src="src/assets/img/tattoo4.jpg" alt="Tatuaje 4" />
