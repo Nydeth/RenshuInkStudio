@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "../cssComponents/adminLogin.css"
 
-export default function AdminLogin() {
+export function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -36,3 +36,5 @@ export default function AdminLogin() {
     </div>
   );
 }
+
+export default LoginForm;
