@@ -69,10 +69,11 @@ function ContactForm() {
 
   return (
     <form className="form-container" onSubmit={handleSubmit}>
-      <h2>Formulario de Contacto</h2>
+      <h2 className="formName">Formulario de Contacto</h2>
+      <h2 className="formH2">Para pedir cita o cualquier otra consulta sobre un tatuaje rellena este formulario:</h2>
       <div className="form-group">
         <label htmlFor="nombre" className="label">
-          Nombre:
+          Nombre
         </label>
         <input
           type="text"
@@ -85,7 +86,7 @@ function ContactForm() {
       </div>
       <div className="form-group">
         <label htmlFor="email" className="label">
-          Email:
+          Correo electrónico
         </label>
         <input
           type="email"
@@ -98,7 +99,7 @@ function ContactForm() {
       </div>
       <div className="form-group phone">
         <label htmlFor="telefono" className="label">
-          Telefono:
+          Teléfono
         </label>
         <PhoneInput
           country={"es"}
@@ -113,7 +114,7 @@ function ContactForm() {
       </div>
       <div className="form-group">
         <label htmlFor="selectTatuadores" className="label">
-          Selecciona un artista:
+          ¿Con quién te gustaría contactar?
         </label>
         <TatuadorSelector />
       </div>

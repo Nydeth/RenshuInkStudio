@@ -14,7 +14,7 @@ export default function Nav() {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
       setIsHidden(currentScrollPos > 50);
-      setIsOpen(false); // Optionally close the menu on scroll
+      setIsOpen(false);
     };
 
     window.addEventListener("scroll", handleScroll);
