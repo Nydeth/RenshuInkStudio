@@ -98,7 +98,7 @@ function ContactForm() {
       </div>
       <div className="form-group phone">
         <label htmlFor="telefono" className="label">
-          Teléfono:
+          Telefono:
         </label>
         <PhoneInput
           country={"es"}

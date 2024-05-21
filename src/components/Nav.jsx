@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "../Link";
 import { Helmet } from "react-helmet";
 import "../cssComponents/nav.css";
-
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
