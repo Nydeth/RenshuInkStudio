@@ -54,14 +54,19 @@ export default function Nav() {
             ></span>
           </button>
           <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
-            <ul className="navbar-nav ms-auto">
+            <ul className="navbar-nav ms-auto navUl">
               <div className="navList links link1">
-                <li className="nav-item">
+                <li className="nav-item navli">
                   <Link to="/" className="nav-link">
                     Inicio
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
+                <li className="nav-itemm navli">
+                  <Link to="/biblioteca" className="nav-link">
+                    Biblioteca
+                  </Link>
+                </li>
+                <li className="nav-itemm navli">
                   <Link to="/equipo" className="nav-link">
                     Equipo
                   </Link>
@@ -76,12 +81,17 @@ export default function Nav() {
                 />
               </div>
               <div className="navList links link2">
-                <li className="nav-item">
+                <li className="nav-itemm navli">
+                  <Link to="/bisuteria" className="nav-link">
+                    Bisutería
+                  </Link>
+                </li>
+                <li className="nav-itemm navli">
                   <Link to="/about" className="nav-link">
                     Conócenos
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-itemm navli">
                   <Link to="/contacto" className="nav-link">
                     Contacto
                   </Link>

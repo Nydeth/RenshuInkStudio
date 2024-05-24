@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/img/OniPi.png" type="image/x-icon">
+    <title>Gestión de Clientes</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .deleteButton {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .deleteButton:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gestión de Clientes</h1>
+    <div>
+        <script>
+            function getToken() {
+                return sessionStorage.getItem('token');
+            }
+            async function obtenerClientes() {
+                const response = await fetch(`http://localhost:5145/api/Clientes`);
+                const data = await response.json();
+                const clientesContainer = document.getElementById('clientesContainer');
+
+                data.forEach(cliente => {
+                    const tr = document.createElement('tr');
+                    const nombreTd = document.createElement('td');
+                    const emailTd = document.createElement('td');
+                    const publicidadTd = document.createElement('td');
+                    const telefonoTd = document.createElement('td');
+                    const numTattoosTd = document.createElement('td');
+                    const tatuadorIdTd = document.createElement('td');
+                    const actionTd = document.createElement('td');
+                    const deleteButton = document.createElement('button');
+
+                    nombreTd.textContent = cliente.nombre;
+                    emailTd.textContent = cliente.email;
+                    publicidadTd.textContent = cliente.publicidad ? 'Sí' : 'No';
+                    telefonoTd.textContent = cliente.telefono || 'N/A';
+                    numTattoosTd.textContent = cliente.num_Tattoos;
+                    tatuadorIdTd.textContent = cliente.tatuadorId;
+                    deleteButton.textContent = 'Eliminar';
+                    deleteButton.classList.add('deleteButton');
+                    deleteButton.onclick = () => eliminarCliente(cliente.id, tr);
+
+                    actionTd.appendChild(deleteButton);
+
+                    tr.appendChild(nombreTd);
+                    tr.appendChild(emailTd);
+                    tr.appendChild(publicidadTd);
+                    tr.appendChild(telefonoTd);
+                    tr.appendChild(numTattoosTd);
+                    tr.appendChild(tatuadorIdTd);
+                    tr.appendChild(actionTd);
+
+                    clientesContainer.appendChild(tr);
+                });
+            }
+
+            async function eliminarCliente(id, tr) {
+                const response = await fetch(`http://localhost:5145/api/Clientes/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`
+                    }
+                });
+
+                if (response.ok) {
+                    tr.remove();
+                    alert('Cliente eliminado con éxito');
+                } else {
+                    alert('Hubo un error al eliminar el cliente');
+                }
+            }
+
+            obtenerClientes();
+        </script>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>E-mail</th>
+                    <th>Recibir Publicidad</th>
+                    <th>Teléfono</th>
+                    <th>Número de Tatuajes</th>
+                    <th>ID Tatuador</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="clientesContainer"></tbody>
+        </table>
+    </div>
+    <button><a href="menuOpciones.html">Volver al menú</a></button>
+</body>
+
+</html>

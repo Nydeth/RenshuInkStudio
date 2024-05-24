@@ -1,0 +1,110 @@
+/* General page styling */
+.bioBody {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container styling */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profPic {
+  width: 200px;
+  height: 200px;
+}
+
+.bioGallery {
+  display: flex;
+  justify-content: center;
+}
+
+.gal2 {
+  /* En realidad eran 10px*/
+  margin-top: 0.5em;
+}
+
+/* Header styling */
+.bioH1,
+.bioH2 {
+  text-align: center;
+  color: #333;
+}
+
+.bioH1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.bioH2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* Content styling */
+.bio-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3em;
+}
+
+.bio-container .profPic {
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.bio-container p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+.page-container .bioH3 {
+    text-align: center;
+}
+
+/* Gallery styling */
+.imgContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgContainer div {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.imgContainer img {
+  width: calc(30% - 20px);
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.imgContainer img:hover {
+  transform: scale(1.05);
+}
+
+.bioIMG {
+  width: 340px;
+}
+
+.bioImg:not(:last-child) {
+  margin-right: 20px;
+}
+
+.bioGallery {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}

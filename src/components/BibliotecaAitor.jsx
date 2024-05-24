@@ -40,7 +40,7 @@ const BibliotecaAitor = () => {
     return (
         <div className="galeria-container">
             <h2 className="nombre-artista">
-                Aitor <a href="https://www.instagram.com/aitor/" target="_blank" rel="noopener noreferrer">@aitor</a>
+                Aitor <a href="https://www.instagram.com/aitor/" target="_blank" rel="noopener noreferrer">@aitor.renshu</a>
             </h2>
             <div className="imagenes-container">
                 {primerGrupo.map((imagen, index) => (
@@ -63,5 +63,6 @@ const BibliotecaAitor = () => {
         </div>
     );
 };
+
 
 export default BibliotecaAitor;

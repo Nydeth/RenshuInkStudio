@@ -11,17 +11,14 @@ export default function BibliotecaImg() {
   return (
     <>
     <Nav />
-    <div className="container">
-        <h1>Biblioteca de Imágenes</h1>
         <div>
-            <h2>Imágenes de Aitor</h2>
+            <h2 className='pageTitle'>Imágenes de Aitor</h2>
             <BibliotecaAitor/>
         </div>
         <div>
-            <h2>Imágenes de Chal</h2>
+            <h2 className='pageTitle'>Imágenes de Chal</h2>
             <BibliotecaChal />
         </div>
-    </div>
     <Footer/>
     </>
   )

@@ -1,53 +1,75 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
+import "../cssComponents/bios.css";
 
-const ImagenesChal = ()  =>{
-    const [imagenes, setImagenes] = useState([]);
+const ImagenesChal = (idTatuador) => {
+  const [imagenes, setImagenes] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const obtenerImagenes = async () => {
-            try {
-                const nombreTatuador = 'chal';
-                const response = await fetch(`http://localhost:5145/api/ImagenesTattoo/tatuador/${nombreTatuador}`);
-                const data = await response.json();
-                setImagenes(data);
-            } catch (error) {
-                console.error('Error al obtener las imágenes:', error);
-            }
-        };
+  useEffect(() => {
+    const obtenerImagenes = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5145/api/ImagenesTattoo`
+        );
+        console.log("Response:", response); // Imprimir la respuesta
 
-        obtenerImagenes();
-    }, []);
+        if (!response.ok) {
+          throw new Error(
+            `Error al obtener las imágenes: ${response.status} ${response.statusText}`
+          );
+        }
 
-    // Dividir las imágenes en dos filas
-    const primeraFila = imagenes.slice(0, 3);
-    const segundaFila = imagenes.slice(3, 6);
+        const data = await response.json();
+        console.log("Data:", data); // Imprimir los datos
+        setImagenes(data);
+      } catch (error) {
+        setError(error.message);
+        console.error("Error al obtener las imágenes:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return (
-        <div id="imagenesContainer" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                {primeraFila.map((imagen, index) => (
-                    <img
-                        key={index}
-                        src={`data:image/jpeg;base64,${imagen.fotografia}`}
-                        alt={imagen.titulo}
-                        style={{ width: '340px', marginRight: index < 2 ? '20px' : '0' }}
-                    />
-                ))}
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                {segundaFila.map((imagen, index) => (
-                    <img
-                        key={index}
-                        src={`data:image/jpeg;base64,${imagen.fotografia}`}
-                        alt={imagen.titulo}
-                        style={{ width: '340px', marginRight: index < 2 ? '20px' : '0' }}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+    obtenerImagenes();
+  }, [idTatuador]);
+
+  // Dividir las imágenes en dos filas
+  const primeraFila = imagenes.slice(0, 3);
+  const segundaFila = imagenes.slice(3, 6);
+
+  return (
+    <div className="imgContainer">
+      {loading ? (
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      ) : error ? (
+        <div>Error: {error}</div>
+      ) : (
+        <>
+          <div className="bioGallery">
+            {primeraFila.map((imagen, index) => (
+              <img
+                className="bioImg"
+                key={index}
+                src={`data:image/jpeg;base64,${imagen.fotografia}`}
+                alt={imagen.titulo}
+              />
+            ))}
+          </div>
+          <div className="bioGallery gal2">
+            {segundaFila.map((imagen, index) => (
+              <img
+                className="bioImg"
+                key={index}
+                src={`data:image/jpeg;base64,${imagen.fotografia}`}
+                alt={imagen.titulo}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
 };
 
-export default ImagenesChal;   
-
-
+export default ImagenesChal;

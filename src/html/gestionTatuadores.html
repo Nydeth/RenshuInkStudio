@@ -1,13 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/OniPi.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Gestión de Tatuadores</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        .deleteButton {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .deleteButton:hover {
+            background-color: #d32f2f;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Crea un nuevo tatuador para tu pagina web</h1>
+    <h1>Gestión de Tatuadores</h1>
+    <div>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="Nombre" required><br><br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="Email" required><br><br>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="Password" required><br><br>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="Telefono" required><br><br>
+
+            <button type="button" onclick="submitForm()">Agregar Tatuador</button>
+        </form>
+
+        <script>
+            function getToken() {
+                return sessionStorage.getItem('token');
+            }
+
+            function submitForm() {
+                const form = document.getElementById('uploadForm');
+                const formData = new FormData(form);
+
+                fetch('http://localhost:5145/api/Tatuadores', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Error: ${response.status} ${response.statusText}`);
+                        }
+                        return response.text().then(text => {
+                            try {
+                                return JSON.parse(text);
+                            } catch {
+                                return text;
+                            }
+                        });
+                    })
+                    .then(data => {
+                        if (typeof data === 'string') {
+                            console.log('Response is a string:', data);
+                            alert(data); // Mostrar el texto plano como alerta
+                        } else {
+                            console.log('Success:', data);
+                            alert(data.message || 'Tatuador agregado con éxito'); // Mostrar el mensaje del objeto JSON
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Hubo un error al agregar el tatuador: ' + error.message);
+                    });
+            }
+
+            async function obtenerTatuadores() {
+                const response = await fetch(`http://localhost:5145/api/Tatuadores`);
+                const data = await response.json();
+                const tatuadoresContainer = document.getElementById('tatuadoresContainer');
+
+                data.forEach(tatuador => {
+                    const tr = document.createElement('tr');
+                    const idTd = document.createElement('td'); // Nueva columna para Id
+                    const nombreTd = document.createElement('td');
+                    const emailTd = document.createElement('td');
+                    const telefonoTd = document.createElement('td');
+
+                    idTd.textContent = tatuador.id; // Asignar el valor de Id
+                    nombreTd.textContent = tatuador.nombre;
+                    emailTd.textContent = tatuador.email;
+                    telefonoTd.textContent = tatuador.telefono;
+
+                    tr.appendChild(idTd); // Añadir la nueva columna a la fila
+                    tr.appendChild(nombreTd);
+                    tr.appendChild(emailTd);
+                    tr.appendChild(telefonoTd);
+
+                    tatuadoresContainer.appendChild(tr);
+                });
+            }
+
+            obtenerTatuadores();
+        </script>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Tatuador</th>
+                    <th>Nombre</th>
+                    <th>E-mail</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody id="tatuadoresContainer"></tbody>
+        </table>
+    </div>
+    <button><a href="menuOpciones.html">Volver al menú</a></button>
 </body>
+
 </html>

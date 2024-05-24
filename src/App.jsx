@@ -10,6 +10,7 @@ import Biblioteca from './pages/BibliotecaImg';
 import Bisuteria from './pages/BisuteriaImg';
 import Equipo from './pages/Equipo';
 import AdminLogin from './pages/AdminLogin';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const appRoutes = [
   {

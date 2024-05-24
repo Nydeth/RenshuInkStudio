@@ -1,13 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/OniPi.png" type="image/x-icon">
-    <title>Bisuteria</title>
+    <title>Gestión de Bisutería</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        .deleteButton {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .deleteButton:hover {
+            background-color: #d32f2f;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Gestiona la creacion o eliminacion de Bisuteria</h1>
+    <h1>Gestión de la Bisutería</h1>
+    <div>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="Titulo" required><br><br>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="Descripcion" required></textarea><br><br>
+
+            <label for="fotografia">Fotografía:</label>
+            <input type="file" id="fotografia" name="Fotografia" accept="image/*" required><br><br>
+
+            <button type="button" onclick="submitForm()">Subir Bisutería</button>
+        </form>
+
+        <script>
+            function getToken() {
+                return sessionStorage.getItem('token');
+            }
+
+            function submitForm() {
+                const form = document.getElementById('uploadForm');
+                const formData = new FormData(form);
+
+                fetch('http://localhost:5145/api/Bisuteria', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: formData
+                })
+                .then(async response => {
+                    const contentType = response.headers.get('Content-Type');
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`Error: ${response.status} ${response.statusText} - ${errorText}`);
+                    }
+                    if (contentType && contentType.includes('application/json')) {
+                        return response.json();
+                    } else {
+                        return response.text();
+                    }
+                })
+                .then(data => {
+                    if (typeof data === 'string') {
+                        console.log('Response is a string:', data);
+                        alert(data); // Mostrar el texto plano como alerta
+                    } else {
+                        console.log('Success:', data);
+                        alert(data.message || 'Bisutería subida con éxito'); // Mostrar el mensaje del objeto JSON
+                    }
+                    obtenerBisuteria(); // Refresh the list after a successful upload
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un error al subir la bisutería: ' + error.message);
+                });
+            }
+
+            async function obtenerBisuteria() {
+                const response = await fetch('http://localhost:5145/api/Bisuteria', {
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`
+                    }
+                });
+                const data = await response.json();
+                const bisuteriaContainer = document.getElementById('bisuteriaContainer');
+
+                bisuteriaContainer.innerHTML = ''; // Clear the container before adding new items
+
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    const imgTd = document.createElement('td');
+                    const img = document.createElement('img');
+                    const titleTd = document.createElement('td');
+                    const descriptionTd = document.createElement('td');
+                    const actionTd = document.createElement('td');
+                    const deleteButton = document.createElement('button');
+
+                    img.src = `data:image/jpeg;base64,${item.fotografia}`;
+                    img.alt = item.titulo;
+                    titleTd.textContent = item.titulo;
+                    descriptionTd.textContent = item.descripcion;
+                    deleteButton.textContent = 'Eliminar';
+                    deleteButton.classList.add('deleteButton');
+                    deleteButton.onclick = () => eliminarBisuteria(item.id, tr);
+
+                    imgTd.appendChild(img);
+                    actionTd.appendChild(deleteButton);
+
+                    tr.appendChild(imgTd);
+                    tr.appendChild(titleTd);
+                    tr.appendChild(descriptionTd);
+                    tr.appendChild(actionTd);
+
+                    bisuteriaContainer.appendChild(tr);
+                });
+            }
+
+            async function eliminarBisuteria(id, tr) {
+                const response = await fetch(`http://localhost:5145/api/Bisuteria/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`
+                    }
+                });
+
+                if (response.ok) {
+                    tr.remove();
+                    alert('Bisutería eliminada con éxito');
+                } else {
+                    const errorText = await response.text();
+                    alert('Hubo un error al eliminar la bisutería: ' + errorText);
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', obtenerBisuteria);
+        </script>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="bisuteriaContainer"></tbody>
+        </table>
+    </div>
+    <button><a href="menuOpciones.html">Volver al menú</a></button>
 </body>
+
 </html>

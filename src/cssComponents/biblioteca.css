@@ -1,0 +1,11 @@
+.pageTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url(../assets/img/Banner.png);
+  width: 100%;
+  color: white;
+  text-shadow: #000000 4px 0 0px;
+  font-family: 'Abril Fatface';
+}

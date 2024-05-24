@@ -1,16 +1,126 @@
-center img {
-    padding: 10px;
+.aboutTitle,
+.aboutText {
+  width: 50%;
 }
 
-h1, p {
-    width: 50%;
+.aboutTitle,
+.galleryTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url(../assets/img/Banner.png);
+  width: 100%;
+  color: white;
+  text-shadow: #000000 4px 0 0px;
+  font-family: "Abril Fatface";
 }
 
-h1 {
-    font-family: 'Abril Fatface';
-    font-size: 5em;
+.galleryTitle {
+  margin-top: 2.5em;
 }
 
-p {
-    font-size: 2em;
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.about-gallery-image {
+  margin: 10px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Media queries */
+@media screen and (max-width: 360px) {
+  .image-gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .about-gallery-image {
+    height: 150px;
+    width: 250px;
+  }
+
+  .galleryTitle {
+    margin-top: 32.5em;
+  }
+}
+
+@media screen and (min-width: 361px) and (max-width: 568px) {
+  .image-gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .about-gallery-image {
+    height: 250px;
+    width: 350px;
+  }
+
+  .galleryTitle {
+    margin-top: 26.5em;
+  }
+}
+
+@media screen and (min-width: 569px) and (max-width: 666px) {
+  .image-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galleryTitle {
+    margin-top: 13.5em;
+  }
+}
+
+@media screen and (min-width: 667px) and (max-width: 768px) {
+  .image-gallery {
+    grid-template-columns: repeat(1, 0.5fr);
+  }
+
+  .galleryTitle {
+    margin-top: 11.5em;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .image-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galleryTitle {
+    margin-top: 9.5em;
+  }
+}
+
+@media screen and (min-width: 1301px) {
+  .image-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .galleryTitle {
+    margin-top: 6.5em;
+  }
+}
+
+@media screen and (min-width: 2049px) {
+  .image-gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .galleryTitle {
+    margin-top: 4.5em;
+  }
+}
+
+@media screen and (min-width: 2559px) {
+  .image-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .galleryTitle {
+    margin-top: 3.5em;
+  }
 }

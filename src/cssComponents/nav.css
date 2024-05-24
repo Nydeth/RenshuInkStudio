@@ -12,15 +12,17 @@ nav {
   display: none;
 }
 
-ul {
-  font-family: "Abril Fatface", cursive;
+.nav-itemm {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
-ul {
+.navUl {
+  font-family: "Abril Fatface", cursive;
   font-size: 20px;
 }
 
-li {
+.navLi {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,7 +116,7 @@ li {
     max-width: calc(9vh + 2 * (6 - 4) * ((100vw - 360px) / (2048 - 426px)));
   }
 
-  ul {
+  .navUl {
     font-size: calc(23px + 5 * (19 - 16) * ((100vw - 360px) / (2048 - 426px)));
   }
 
@@ -139,7 +141,7 @@ li {
     text-align: center;
   }
 
-  ul {
+  .navUl {
     font-size: calc(23px + 5 * (19 - 16) * ((100vw - 360px) / (2048 - 360)));
   }
 }
