@@ -36,7 +36,7 @@
     color: var(--oniBlue);
   }
 
-  .bisSection {
+  .aniSec {
     margin-bottom: 2em;
   }
 
@@ -116,6 +116,12 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   justify-content: center;
+}
+
+.galSec {
+  background-image: url(../assets/img/starbg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Media queries */

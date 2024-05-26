@@ -30,7 +30,6 @@ const ImagenesAitor = ({ idTatuador }) => {
   }, [idTatuador]);
 
   // Dividir las imágenes en dos filas
-  const primeraFila = imagenes.slice(0, 3);
   const segundaFila = imagenes.slice(3, 6);
 
   return (
@@ -41,16 +40,6 @@ const ImagenesAitor = ({ idTatuador }) => {
         <div>Error: {error}</div>
       ) : (
         <>
-          <div className="bioGallery">
-            {primeraFila.map((imagen, index) => (
-              <img
-                className="bioImg"
-                key={index}
-                src={`data:image/jpeg;base64,${imagen.fotografia}`}
-                alt={imagen.titulo}
-              />
-            ))}
-          </div>
           <div className="bioGallery gal2">
             {segundaFila.map((imagen, index) => (
               <img

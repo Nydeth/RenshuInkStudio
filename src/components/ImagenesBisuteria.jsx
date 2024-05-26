@@ -31,7 +31,16 @@ const BisuteriaImages = () => {
   return (
     <div className="gallery-image">
       {loading ? (
-        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       ) : error ? (
         <div>Error: {error}</div>
       ) : (
@@ -39,8 +48,8 @@ const BisuteriaImages = () => {
           {imagenes.map((imagen, index) => (
             <div className="img-box" key={index}>
               <img
-                src={`data:image/jpeg;base64,${imagen.fotografia}`} // Asegúrate de que el campo correcto es 'fotografia'
-                alt={imagen.titulo} // Asegúrate de que el campo correcto es 'titulo'
+                src={`data:image/jpeg;base64,${imagen.fotografia}`}
+                alt={imagen.titulo}
               />
               <div className="transparent-box">
                 <div className="caption">

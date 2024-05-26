@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import usePageTitle from "../UsePageTitle";
 import BibliotecaAitor from '../components/BibliotecaAitor';
 import BibliotecaChal from '../components/BibliotecaChal';
+import ImagenesAitor from '../components/ImagenesAitor';
 
 
 export default function BibliotecaImg() {
@@ -13,11 +14,11 @@ export default function BibliotecaImg() {
     <Nav />
         <div>
             <h2 className='pageTitle'>Imágenes de Aitor</h2>
-            <BibliotecaAitor/>
+            <ImagenesAitor/>
         </div>
         <div>
             <h2 className='pageTitle'>Imágenes de Chal</h2>
-            <BibliotecaChal />
+            <ImagenesAitor/>
         </div>
     <Footer/>
     </>

@@ -8,7 +8,7 @@ function TatuadorSelector() {
   const [tatuadores, setTatuadores] = useState([]);
 
   useEffect(() => {
-    fetch("https://7409-139-47-81-118.ngrok-free.app/api/Tatuadores/NombresId")
+    fetch("http://localhost:5145/api/Tatuadores/NombresId")
       .then((response) => response.json())
       .then((data) => {
         setTatuadores(data);
@@ -50,7 +50,7 @@ function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://tu-api.com/clientes", {
+      const response = await fetch("http://localhost:5145/api/Clientes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

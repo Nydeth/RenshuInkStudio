@@ -3,7 +3,7 @@ import Nav from '../components/Nav'
 import  Footer from '../components/Footer'
 import usePageTitle from "../UsePageTitle";
 import ImagenesBisuteria from '../components/ImagenesBisuteria'
-import Anilladora from '../components/Anilladora'
+import Anilladora from '../components/Artists/Anilladora'
 
 
 export default function BisuteriaImg() {
@@ -11,17 +11,19 @@ export default function BisuteriaImg() {
   return (
     <>
     <Nav />
-    <section className='bisSection'>
+    <section className='bisSection aniSec'>
     <h1 className='bisTitle'>Nuestra anilladora</h1>
+      <div className="tats">
     <Anilladora />
+    </div>
     </section>
-    <section className='bisSection'>
+    <section className='bisSection galSec'>
     <h1 className='bisTitle'>Bisutería</h1>
     <div className="container">
     <ImagenesBisuteria />
     </div>
     </section>
-    <Footer />
+    <Footer className="bisFooter" />
     </>
   )
 }
