@@ -1,29 +1,42 @@
-import React from 'react'
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
-import ImagenesChal from '../components/ImagenesChal'
-import usePageTitle from '../UsePageTitle'
+import React from "react";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import ImagenesAitor from "../components/ImagenesAitor";
+import usePageTitle from "../UsePageTitle";
 
 export default function ChalPage() {
-  usePageTitle('Chal');
+  usePageTitle("Chal");
   return (
     <>
-    <body className='bioBody'>
-      <Nav />
-      <div className="page-container">
-        <h1 className='bioH1'>Sobre mí</h1>
-        <h2 className='bioH2'>Chal</h2>
-        <div className="bio-container">
-          <img className='profPic' src="src/assets/img/Tatuador2.jpeg" alt="Tatuador Chal" />
-          <p className='bioText'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis asperiores dolores odio molestias quod, sunt doloribus maxime delectus cum nihil numquam eos ex inventore eveniet libero, quibusdam perferendis ut sequi.</p>
+      <body className="bioBody">
+        <Nav />
+        <div className="page-container">
+          <h2 className="bioH2">Chal</h2>
+          <div className="bio-container">
+            <img
+              className="profPic"
+              src="src/assets/img/Tatuador1.jpeg"
+              alt="Tatuador Chal"
+            />
+            <p className="bioText">
+              conocido por su estilo único que combina influencias del arte
+              tradicional japonés con un toque contemporáneo. Con más de una
+              década de experiencia en el mundo del tatuaje. Además de tatuar,
+              Chal es un ferviente defensor de la cultura del tatuaje,
+              participando activamente en talleres y seminarios para educar a la
+              próxima generación de artistas.
+            </p>
+          </div>
+          <div class="sign">
+            <span class="fast-flicker">Ú</span>LTIMOS &nbsp;
+            <span class="flicker"> T</span>RABAJOS
+          </div>
         </div>
-        <div>
-          <h3 className='bioH3'>Últimos trabajos</h3>
-          <ImagenesChal />
+        <div className="container">
+          <ImagenesAitor />
         </div>
-      </div>
-      <Footer />
-    </body>
+        <Footer />
+      </body>
     </>
   );
 }

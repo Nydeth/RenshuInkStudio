@@ -6,47 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/OniPi.png" type="image/x-icon">
+    <link rel="stylesheet" href="../cssComponents/gestiones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Gestión de Bisutería</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        img {
-            max-width: 200px;
-            max-height: 200px;
-        }
-
-        .deleteButton {
-            background-color: #f44336;
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .deleteButton:hover {
-            background-color: #d32f2f;
-        }
-    </style>
 </head>
 
 <body>
-    <h1>Gestión de la Bisutería</h1>
-    <div>
+    <header>
+        <a href="/">
+            <img src="../assets/img/OniPi.png" alt="logo" class="logoNav">
+        </a>
+    </header>
+    <div class="logoutDiv">
+        <span class="logoutText" alt="Cerrar sesión" onclick="logout()">Cerrar sesión</span>
+        <span class="fa fa-arrow-right-from-bracket logout" onclick="logout()"></span>
+    </div>
+    <div class="container">
+        <h1>Gestión de la Bisutería</h1>
         <form id="uploadForm" enctype="multipart/form-data">
             <label for="titulo">Título:</label>
             <input type="text" id="titulo" name="Titulo" required><br><br>
@@ -57,114 +33,9 @@
             <label for="fotografia">Fotografía:</label>
             <input type="file" id="fotografia" name="Fotografia" accept="image/*" required><br><br>
 
-            <button type="button" onclick="submitForm()">Subir Bisutería</button>
+            <button type="button" class="upload-button" onclick="submitForm()">Subir Bisutería</button>
         </form>
 
-        <script>
-            function getToken() {
-                return sessionStorage.getItem('token');
-            }
-
-            function submitForm() {
-                const form = document.getElementById('uploadForm');
-                const formData = new FormData(form);
-
-                fetch('http://localhost:5145/api/Bisuteria', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${getToken()}`
-                    },
-                    body: formData
-                })
-                .then(async response => {
-                    const contentType = response.headers.get('Content-Type');
-                    if (!response.ok) {
-                        const errorText = await response.text();
-                        throw new Error(`Error: ${response.status} ${response.statusText} - ${errorText}`);
-                    }
-                    if (contentType && contentType.includes('application/json')) {
-                        return response.json();
-                    } else {
-                        return response.text();
-                    }
-                })
-                .then(data => {
-                    if (typeof data === 'string') {
-                        console.log('Response is a string:', data);
-                        alert(data); // Mostrar el texto plano como alerta
-                    } else {
-                        console.log('Success:', data);
-                        alert(data.message || 'Bisutería subida con éxito'); // Mostrar el mensaje del objeto JSON
-                    }
-                    obtenerBisuteria(); // Refresh the list after a successful upload
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al subir la bisutería: ' + error.message);
-                });
-            }
-
-            async function obtenerBisuteria() {
-                const response = await fetch('http://localhost:5145/api/Bisuteria', {
-                    headers: {
-                        'Authorization': `Bearer ${getToken()}`
-                    }
-                });
-                const data = await response.json();
-                const bisuteriaContainer = document.getElementById('bisuteriaContainer');
-
-                bisuteriaContainer.innerHTML = ''; // Clear the container before adding new items
-
-                data.forEach(item => {
-                    const tr = document.createElement('tr');
-                    const imgTd = document.createElement('td');
-                    const img = document.createElement('img');
-                    const titleTd = document.createElement('td');
-                    const descriptionTd = document.createElement('td');
-                    const actionTd = document.createElement('td');
-                    const deleteButton = document.createElement('button');
-
-                    img.src = `data:image/jpeg;base64,${item.fotografia}`;
-                    img.alt = item.titulo;
-                    titleTd.textContent = item.titulo;
-                    descriptionTd.textContent = item.descripcion;
-                    deleteButton.textContent = 'Eliminar';
-                    deleteButton.classList.add('deleteButton');
-                    deleteButton.onclick = () => eliminarBisuteria(item.id, tr);
-
-                    imgTd.appendChild(img);
-                    actionTd.appendChild(deleteButton);
-
-                    tr.appendChild(imgTd);
-                    tr.appendChild(titleTd);
-                    tr.appendChild(descriptionTd);
-                    tr.appendChild(actionTd);
-
-                    bisuteriaContainer.appendChild(tr);
-                });
-            }
-
-            async function eliminarBisuteria(id, tr) {
-                const response = await fetch(`http://localhost:5145/api/Bisuteria/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${getToken()}`
-                    }
-                });
-
-                if (response.ok) {
-                    tr.remove();
-                    alert('Bisutería eliminada con éxito');
-                } else {
-                    const errorText = await response.text();
-                    alert('Hubo un error al eliminar la bisutería: ' + errorText);
-                }
-            }
-
-            document.addEventListener('DOMContentLoaded', obtenerBisuteria);
-        </script>
-    </div>
-    <div>
         <table>
             <thead>
                 <tr>
@@ -176,8 +47,130 @@
             </thead>
             <tbody id="bisuteriaContainer"></tbody>
         </table>
+        
+        <button type="button" class="back-button" href="menuOpciones.html"><a href="menuOpciones.html">Volver al menú</a></button>
     </div>
-    <button><a href="menuOpciones.html">Volver al menú</a></button>
+
+    <script>
+        function getToken() {
+            return sessionStorage.getItem('token');
+        }
+
+        function submitForm() {
+            const form = document.getElementById('uploadForm');
+            const formData = new FormData(form);
+
+            fetch('http://localhost:5145/api/Bisuteria', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${getToken()}`
+                },
+                body: formData
+            })
+            .then(async response => {
+                const contentType = response.headers.get('Content-Type');
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Error: ${response.status} ${response.statusText} - ${errorText}`);
+                }
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json();
+                } else {
+                    return response.text();
+                }
+            })
+            .then(data => {
+                if (typeof data === 'string') {
+                    console.log('Response is a string:', data);
+                    alert(data); // Mostrar el texto plano como alerta
+                } else {
+                    console.log('Success:', data);
+                    alert(data.message || 'Bisutería subida con éxito'); // Mostrar el mensaje del objeto JSON
+                }
+                obtenerBisuteria();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al subir la bisutería: ' + error.message);
+            });
+        }
+
+        async function obtenerBisuteria() {
+            const response = await fetch('http://localhost:5145/api/Bisuteria', {
+                headers: {
+                    'Authorization': `Bearer ${getToken()}`
+                }
+            });
+            const data = await response.json();
+            const bisuteriaContainer = document.getElementById('bisuteriaContainer');
+
+            bisuteriaContainer.innerHTML = '';
+
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                const imgTd = document.createElement('td');
+                const img = document.createElement('img');
+                const titleTd = document.createElement('td');
+                const descriptionTd = document.createElement('td');
+                const actionTd = document.createElement('td');
+                const deleteButton = document.createElement('button');
+
+                img.src = `data:image/jpeg;base64,${item.fotografia}`;
+                img.alt = item.titulo;
+                titleTd.textContent = item.titulo;
+                descriptionTd.textContent = item.descripcion;
+                deleteButton.textContent = 'Eliminar';
+                deleteButton.classList.add('deleteButton');
+                deleteButton.onclick = () => eliminarBisuteria(item.id, tr);
+
+                imgTd.appendChild(img);
+                actionTd.appendChild(deleteButton);
+
+                tr.appendChild(imgTd);
+                tr.appendChild(titleTd);
+                tr.appendChild(descriptionTd);
+                tr.appendChild(actionTd);
+
+                bisuteriaContainer.appendChild(tr);
+            });
+        }
+
+        async function eliminarBisuteria(id, tr) {
+            const response = await fetch(`http://localhost:5145/api/Bisuteria/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${getToken()}`
+                }
+            });
+
+            if (response.ok) {
+                tr.remove();
+                alert('Bisutería eliminada con éxito');
+            } else {
+                const errorText = await response.text();
+                alert('Hubo un error al eliminar la bisutería: ' + errorText);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', obtenerBisuteria);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutDiv = document.querySelector('.logoutDiv');
+            let isHidden = false;
+
+            function handleScroll() {
+                const currentScrollPos = window.pageYOffset;
+                const shouldBeHidden = currentScrollPos > 15;
+
+                if (shouldBeHidden !== isHidden) {
+                    isHidden = shouldBeHidden;
+                    logoutDiv.style.display = isHidden ? 'none' : 'block';
+                }
+            }
+
+            window.addEventListener("scroll", handleScroll);
+        });
+    </script>
 </body>
 
 </html>

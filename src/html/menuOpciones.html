@@ -6,32 +6,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/OniPi.png" type="image/x-icon">
-    <title>Menú Gestion Renshu Ink</title>
+    <link rel="stylesheet" href="../cssComponents/optionMenu.scss">
+    <title>Menú Gestión Renshu Ink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body>
-    <h1 style="text-align: center;">Menú de opciones</h1>
-    <div style="text-align: center;">
-        <li>
-            <a href="../html/gestionBisuteria.html">Gestión de bisutería</a>
-        </li>
-        <li>
-            <a href="../html/gestionImagenes.html">Gestión de imágenes de tatuajes</a>
-        </li>
-        <li>
-            <a href="../html/gestionNoticias.html">Generar newsletter/noticia</a>
-        </li>
-        <li>
-            <a href="../html/gestionTatuadores.html">Crear o eliminar un tatuador o anillador</a>
-        </li>
-        <li>
-            <a href="../html/gestionClientes.html">Gestión de clientes</a>
-        </li>
-        <li>
-            <a href="/">Volver al Inicio</a>
-        </li>
-
+<body class="menuBody">
+    <header>
+        <a href="/">
+            <img src="../assets/img/OniPi.png" alt="logo" class="logoNav">
+        </a>
+    </header>
+    <div class="logoutDiv">
+        <button class="logoutText btn btn-link" alt="Cerrar sesión" onclick="logout()">Cerrar sesión</button>
+        <span class="fa fa-arrow-right-from-bracket logout" onclick="logout()"></span>
     </div>
+    <center>
+        <h1>Pulsa o haz click en el menú para ver las opciones de gestión</h1>
+    </center>
+    <h3>
+        <span class="h3Title">Leyenda:</span><br>
+        <i class="fa fa-ring bisLeyend"><span class="leyend">Gestión de Bisutería</span></i><br>
+        <i class="fa fa-image imgsLeyend"><span class="leyend"> Gestión de Imágenes de Tatuajes</span></i><br>
+        <i class="fa fa-envelope-open-text newsLeyend"><span class="leyend"> Generar Newsletter o Noticia</span></i><br>
+        <i class="fa fa-feather tatsLeyend"><span class="leyend"> Gestión de Tatuadores</span></i><br>
+        <i class="fa fa-user-tie clientsLeyend"><span class="leyend"> Gestión de Clientes</span></i><br>
+        <i class="fa fa-home homeLeyend"><span class="leyend"> Volver a la Página Principal</span></i><br>
+    </h3>
+    <nav class="menu">
+        <input id="menu-toggler" class="menu-toggler" type="checkbox" checked="checked">
+        <label for="menu-toggler"></label>
+        <ul>
+            <li class="menu-item bis">
+                <a href="../html/gestionBisuteria.html" class="fa fa-ring" data-toggle="tooltip" data-placement="top"
+                    title="Gestión de Bisutería"><span class="leyend"></a>
+            </li>
+            <li class="menu-item imgs">
+                <a href="../html/gestionImagenes.html" class="fa fa-image" data-toggle="tooltip" data-placement="top"
+                    title="Gestión de Imágenes de Tatuajes"><span class="leyend"></a>
+            </li>
+            <li class="menu-item news">
+                <a href="../html/gestionNoticias.html" class="fa fa-envelope-open-text" data-toggle="tooltip"
+                    data-placement="top" title="Generar Newsletter o Noticia"><span class="leyend"></a>
+            </li>
+            <li class="menu-item tats">
+                <a href="../html/gestionTatuadores.html" class="fa fa-feather" data-toggle="tooltip"
+                    data-placement="top" title="Gestión de Tatuadores"><span class="leyend"></a>
+            </li>
+            <li class="menu-item clients">
+                <a href="../html/gestionClientes.html" class="fa fa-user-tie" data-toggle="tooltip" data-placement="top"
+                    title="Gestión de Clientes"><span class="leyend"></a>
+            </li>
+            <li class=" menu-item home">
+                        <a href="/" class="fa fa-home" data-toggle="tooltip" data-placement="top"
+                            title="Volver a la Página Principal"><span class="leyend"></a>
+            </li>
+        </ul>
+    </nav>
+    <script>
+        function logout() {
+            sessionStorage.removeItem("token");
+            location.href = "/";
+        }
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </body>
 
 </html>
