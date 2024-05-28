@@ -7,7 +7,7 @@ import Anilladora from '../components/Artists/Anilladora'
 
 
 export default function BisuteriaImg() {
-  usePageTitle('Bisutería');
+  usePageTitle('Bisutería - Renshu Ink');
   return (
     <>
     <Nav />

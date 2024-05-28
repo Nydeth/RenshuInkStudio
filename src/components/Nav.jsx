@@ -12,7 +12,7 @@ export default function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
+      const currentScrollPos = window.scrollY;
       setIsHidden(currentScrollPos > 50);
       setIsOpen(false);
     };

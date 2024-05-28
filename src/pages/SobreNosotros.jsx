@@ -8,6 +8,7 @@ export default function SobreNosotros() {
   return (
     <>
       <Nav />
+      <title>Renshu Ink Studio</title>
       <h1 className="aboutTitle">Sobre nosotros</h1>
       <center className="aboutCenter">
         <h2 className="aboutText">

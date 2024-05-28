@@ -36,7 +36,7 @@ const ImagenesChal = ({ idTatuador }) => {
   const ultimasTres = imagenes.slice(-3);
 
   return (
-    <div className="about-gallery">
+    <div className="library-gallery">
         {loading ? (
           <div className="lds-roller">
             <div></div>
@@ -53,16 +53,16 @@ const ImagenesChal = ({ idTatuador }) => {
         ) : (
           <>
             {ultimasTres.map((imagen, index) => (
-              <div className="about-img-box" key={index}>
+              <div className="library-img-box" key={index}>
                 <img
-                className="about-image"
+                className="library-image"
                   src={`data:image/jpeg;base64,${imagen.fotografia}`}
                   alt={imagen.titulo}
                 />
-                <div className="about-transparent-box">
-                  <div className="about-caption">
+                <div className="library-transparent-box">
+                  <div className="library-caption">
                     <p>{imagen.titulo}</p>
-                    <p className="about-opacity-low">{imagen.descripcion}</p>
+                    <p className="library-opacity-low">{imagen.descripcion}</p>
                   </div>
                 </div>
               </div>

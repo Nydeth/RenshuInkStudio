@@ -18,12 +18,6 @@
     font-weight: bold;
   }
   
-  .artists-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6em;
-  }
-  
   #bis-info {
     position: absolute;
     font-size: small;
@@ -48,7 +42,7 @@
     color: white;
 }
 
-.gallery-image img {
+.bis-gallery-image img {
   height: 350px;
   width: 450px;
   transform: scale(1.0);
@@ -110,7 +104,7 @@
   opacity: 0.5;
 }
 
-.gallery-image {
+.bis-gallery-image {
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -126,11 +120,11 @@
 
 /* Media queries */
 @media screen and (max-width: 360px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(1, 1fr);
   }
 
-  .gallery-image img {
+  .bis-gallery-image img {
     height: 150px;
     width: 250px;
   }
@@ -147,11 +141,11 @@
 }
 
 @media screen and (min-width: 361px) and (max-width: 568px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(1, 1fr);
   }
 
-.gallery-image img {
+.bis-gallery-image img {
   height: 250px;
   width: 350px;
 }
@@ -168,37 +162,37 @@
 }
 
 @media screen and (min-width: 569px) and (max-width: 666px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 667px) and (max-width: 768px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(1, .5fr);
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 1301px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (min-width: 2049px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media screen and (min-width: 2559px) {
-  .gallery-image {
+  .bis-gallery-image {
     grid-template-columns: repeat(5, 1fr);
   }
 }

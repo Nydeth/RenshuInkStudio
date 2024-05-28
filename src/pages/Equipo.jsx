@@ -15,6 +15,7 @@ import Alejandro from "../components/Artists/Alejandro.jsx";
 export default function Equipo() {
   return (
     <div className="main-container">
+      <title>Renshu Ink Studio</title>
       <Nav />
       {/* Founder section */}
       <Founder />

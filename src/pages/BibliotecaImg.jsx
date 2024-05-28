@@ -7,7 +7,7 @@ import ImagenesChal from "../components/ImagenesChal";
 import "../cssComponents/bios.css";
 
 export default function BibliotecaImg() {
-  usePageTitle("Biblioteca");
+  usePageTitle("Biblioteca - Renshu Ink");
   return (
     <>
       <Nav />

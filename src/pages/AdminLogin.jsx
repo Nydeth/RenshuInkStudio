@@ -8,6 +8,7 @@ import AdminForm from "../components/AdminForm";
 export default function AdminLogin() {
   return (
     <body className="adminBody">
+    <title>Renshu Ink Studio</title>
       <Nav />
       <div className="container">
         <AdminForm />

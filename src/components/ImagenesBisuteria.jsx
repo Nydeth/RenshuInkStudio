@@ -29,7 +29,7 @@ const BisuteriaImages = () => {
   }, []);
 
   return (
-    <div className="gallery-image">
+    <div className="bis-gallery-image">
       {loading ? (
         <div class="lds-roller">
           <div></div>

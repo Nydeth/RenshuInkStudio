@@ -5,7 +5,7 @@ import ImagenesAitor from "../components/ImagenesAitor";
 import usePageTitle from "../UsePageTitle";
 
 export default function ChalPage() {
-  usePageTitle("Chal");
+  usePageTitle("Chal - Renshu Ink");
   return (
     <>
       <body className="bioBody">

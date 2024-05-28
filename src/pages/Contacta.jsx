@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import FormularioContacto from "../components/FormularioContacto";
 import usePageTitle from "../UsePageTitle";
 export default function Contacta() {
-  usePageTitle('Contáctanos');
+  usePageTitle('Contáctanos - Renshu Ink');
 return (
   <body>
   <body className="formBody">

@@ -5,7 +5,7 @@ import ImagenesAitor from "../components/ImagenesAitor";
 import usePageTitle from "../UsePageTitle";
 
 export default function AitorPage() {
-  usePageTitle("Aitor");
+  usePageTitle("Aitor - Renshu Ink");
   return (
     <>
       <body className="bioBody">
